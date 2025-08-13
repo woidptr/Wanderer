@@ -18,19 +18,18 @@ function love.load()
     -- set the graphics settings
     love.graphics.setDefaultFilter("nearest", "nearest")
 
+    game:new()
+
     -- setting up the window
     love.window.setMode(
-        game.window_width,
-        game.window_height,
+        game.window_size.x,
+        game.window_size.y,
         {
             fullscreen = false
         }
     )
 
     love.window.setTitle("The Void")
-
-    base_width  = game.window_width / game.gui_scale
-    base_height = game.window_height / game.gui_scale
 
     -- set the current screen to start_screen
     game.current_screen = screen_factory:create("start_screen")
@@ -42,14 +41,7 @@ function love.load()
 end
 
 function love.draw()
-    -- calculate the gui scale
-    local win_width, win_height = love.graphics.getDimensions()
-
-    -- Calculate scale factors
-    local scale_x = win_width / base_width
-    local scale_y = win_height / base_height
-
-    local scale = math.min(scale_x, scale_y)
+    local scale = game:calculate_gui_scale()
 
     love.graphics.scale(scale)
 

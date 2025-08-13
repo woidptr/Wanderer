@@ -1,2 +1,2 @@
 # Wanderer
-A 2d pixel game made with lya and love2d
+I wanted to try lua programming language and I decided to make a game with love2d framework.
