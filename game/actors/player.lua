@@ -1,4 +1,4 @@
-player = {}
+local player = {}
 
 function player.load()
     player.x = 0
@@ -13,3 +13,5 @@ end
 function player.draw()
     
 end
+
+return player

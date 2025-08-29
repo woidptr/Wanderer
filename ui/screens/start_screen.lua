@@ -1,30 +1,21 @@
 return function(game)
+    local button = require("ui.elements.button")
+
     local start_screen = {}
 
     function start_screen:load()
-        -- base_width  = game.window_width / game.gui_scale
-        -- base_height = game.window_height / game.gui_scale
-
-        self.settings_btn = love.graphics.newImage("assets/settings-btn.png")
+        self.settings_btn_texture = love.graphics.newImage("assets/settings-btn.png")
+        local settings_btn_texturee = love.graphics.newImage("assets/settings-btn.png")
+        self.settings_btn = button:new(settings_btn_texturee, 50, 50)
+        -- self.settings_btn = love.graphics.newImage("assets/settings-btn.png")
     end
 
     function start_screen:draw()
         local win_width, win_height = love.graphics.getDimensions()
 
-        -- -- Calculate scale factors
-        -- local scale_x = win_width / base_width
-        -- local scale_y = win_height / base_height
+        love.graphics.draw(self.settings_btn_texture, self.settings_btn.x, self.settings_btn.y, 0)
 
-        -- local scale = math.min(scale_x, scale_y)
-
-        -- local img_width  = self.settings_btn:getWidth() * scale
-        -- local img_height = self.settings_btn:getHeight() * scale
-
-        -- -- Center position
-        -- local x = (win_width  - img_width) / 2
-        -- local y = (win_height - img_height) / 2
-        
-        love.graphics.draw(self.settings_btn, 50, 50, 0)
+        -- self.settings_btn:draw()
     end
 
     return start_screen

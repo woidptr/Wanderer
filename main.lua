@@ -1,5 +1,5 @@
-require("player")
-local game = require("game")
+local player = require("game.actors.player")
+local game = require("game.game")
 local screen_factory = require("ui.screen_factory")
 
 function love.keypressed(key)
@@ -25,11 +25,14 @@ function love.load()
         game.window_size.x,
         game.window_size.y,
         {
-            fullscreen = false
+            fullscreen = false,
+            resizable = true,
         }
     )
 
     love.window.setTitle("The Void")
+
+    love.graphics.setNewFont("assets/fonts/silkscreen/slkscr.ttf", 25)
 
     -- set the current screen to start_screen
     game.current_screen = screen_factory:create("start_screen")
@@ -40,7 +43,12 @@ function love.load()
     end
 end
 
+function love.update(dt)
+
+end
+
 function love.draw()
+    -- calculate and set the gui scale
     local scale = game:calculate_gui_scale()
 
     love.graphics.scale(scale)
@@ -50,5 +58,5 @@ function love.draw()
         game.current_screen:draw()
     end
 
-    love.graphics.print("Hello World!", 400, 300)
+    love.graphics.print("Settings", 50, 100)
 end

@@ -1,4 +1,4 @@
-local game = require("game")
+local game = require("game.game")
 
 local screen_factory = {}
 
